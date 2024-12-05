@@ -1,0 +1,103 @@
+<app-navbar></app-navbar>
+
+<div class="login-wrap">
+	<div class="login-html">
+		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+		<div class="login-form">
+			<div class="sign-in-htm">
+				<div class="group">
+					<label for="user" class="label">Email</label>
+					<input id="user" type="text" class="input" [(ngModel)]="infotolog.email" >
+				</div>
+
+				<div class="group">
+					<label for="pass" class="label">Password</label>
+					<input id="pass" type="password" class="input" data-type="password"  [(ngModel)]="infotolog.pass">
+				</div>
+
+				<div class="group" >
+                     <label for="JopType">Choose a Type:</label>
+                        <select name="JopType" id="cars" (change)="onJobTypeChange($event)" class="input">
+                            <option name="JopType" style="color: black;">Custmer</option>
+                            <option name="JopType" style="color: black;">Employee</option>
+                            <option name="JopType" style="color: black;">Admin</option>
+                        </select>
+                </div>
+
+
+				<div class="group">
+					<input id="check" type="checkbox" class="check" checked>
+					<label for="check"><span class="icon"></span> Keep me Signed in</label>
+				</div>
+				<div class="group">
+					<input type="submit" class="button" value="Sign In" (click)="Login()">
+				</div>
+				<div class="hr"></div>
+				<div class="foot-lnk">
+					<a href="#forgot">Forgot Password?</a>
+				</div>
+			</div>
+
+
+
+
+
+            <!-- // -->
+            <div class="sign-up-htm">
+				<div class="group">
+					<!-- <label for="user" class="label">Emsil</label> -->
+					<input id="user" type="text" class="input" [(ngModel)]="infotoreg.Email" placeholder="Email">
+					
+				</div>
+				<div class="group">
+					<!-- <label for="pass" class="label">Password</label> -->
+					<input id="pass" type="password" class="input" data-type="password" [(ngModel)]="infotoreg.Pass" placeholder="password">
+				</div>
+
+				
+				
+				
+
+
+				<div class="group">
+					<!-- <label for="pass" class="label">First Name</label> -->
+					<input id="pass" type="text" class="hha"  [(ngModel)]="infotoreg.FirstName" placeholder="FirstName">
+					<input id="pass" type="text" class="hha" [(ngModel)]="infotoreg.LastName" placeholder="LastName">
+
+				</div>
+				
+
+                <div class="group">
+					<!-- <label for="pass" class="label">Age</label> -->
+					<input id="pass" type="number" class="input" [(ngModel)]="infotoreg.Age" placeholder="Age">
+				</div>
+                
+                <div class="group">
+					<!-- <label for="pass" class="label">SSN</label> -->
+					<input id="pass" type="text" class="input" [(ngModel)]="infotoreg.Ssn" placeholder="SSN">
+				</div>
+                
+                <div class="group">
+					<!-- <input id="pass" type="file" class="input"  [(ngModel)]="infotoreg.image"> -->
+					<input id="pass" class="hha" type="text"  [(ngModel)]="infotoreg.Street" placeholder="Street">
+			
+					<input id="pass" class="hha" type="text"  [(ngModel)]="infotoreg.City" placeholder="City">
+				</div>
+                
+
+				
+
+			
+
+	 			<div class="group">
+					<input type="submit" class="button" value="Sign Up" (click)="Register()">
+				</div>
+				<div class="hr"></div>
+				<div class="foot-lnk">
+				<label for="tab-1"><a>Already Member?</a></label>
+				
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,69 @@
+.card-custom {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .card-body {
+    flex: 1;
+  }
+
+
+
+  #t .card-custom {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  #t .card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  #t .card {
+    height: 100%;
+  }
+  #t .btn-primary {
+    align-self: flex-end;
+  }
+
+
+
+
+
+
+
+  #toupdateEmp .form-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+  }
+  #toupdateEmp .form-container label {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  #toupdateEmp .form-container input[type="text"],
+  #toupdateEmp .form-container input[type="date"],
+  #toupdateEmp .form-container input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  #toupdateEmp .form-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  #toupdateEmp .form-container button:hover {
+    background-color: #0056b3;
+  }

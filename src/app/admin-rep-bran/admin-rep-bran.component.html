@@ -1,0 +1,36 @@
+<div class="container-fluid">
+  <div class="card">
+  <div class="card-body">
+         
+  <table class="table">
+  <thead>
+      <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Employee ID</th>
+          <th>Brach ID</th>
+          <th>Slary</th>
+          <th>Start Date</th>
+          <th>Email</th>
+          <th>Type</th>
+          
+      </tr>
+  </thead>
+  
+  <tbody *ngFor="let item of allEmp">
+  <tr>
+          <td>{{item.firstName}}</td>
+          <td>{{item.lastName}}</td>
+          <td>{{item.id}}</td>
+          <td>{{item.branchId}}</td>
+          <td>{{item.salary}}</td>
+          <td>{{item.startDate}}</td>
+          <td>{{item.email}}</td>
+          <td>{{item.type}}</td>
+
+      </tr>
+  </tbody>
+  </table>
+  </div>
+  </div>
+  </div>

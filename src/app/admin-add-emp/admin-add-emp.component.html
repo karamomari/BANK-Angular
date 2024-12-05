@@ -1,0 +1,162 @@
+<!-- <div>
+<p>admin-add-emp works!</p>
+<p>{{id}}</p>
+
+
+
+
+
+<label for="">Branch id</label>
+<input type="text" name="" id="" [(ngModel)]="testt.braid">
+<div></div>
+
+<label for="">Type</label>
+<input type="text" name="" id="" [(ngModel)]="testt.Type">
+<div></div>
+
+<label for="">Last name</label>
+<input type="text" name="" id="" [(ngModel)]="testt.LastName">
+<div></div>
+
+<label for="">first name</label>
+<input type="text" name="" id="" [(ngModel)]="testt.FirstName">
+<div></div>
+
+<label for="">salary</label>
+<input type="text" name="" id="" [(ngModel)]="testt.Salary">
+<div></div>
+
+<label for="">emali</label>
+<input type="text" name="" id="" [(ngModel)]="testt.email">
+<div></div>
+
+<button (click)="AddEmp()">Add Employee</button>
+<button (click)="test()" >add Emp</button> 
+</div>
+
+<button [routerLink]="['/admin', id]">returen home</button> -->
+
+
+
+<section class="h-100 bg-dark">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col">
+          <div class="card card-registration my-4">
+            <div class="row g-0">
+              <div class="col-xl-6 d-none d-xl-block">
+                <img src="../../assets/images/addpageEmp.webp"
+                  alt="Sample photo" class="img-fluid"
+                  style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
+              </div>
+              <div class="col-xl-6">
+                <div class="card-body p-md-5 text-black">
+                  <h3 class="mb-5 text-uppercase">Employee registration form</h3>
+  
+                  <div class="row">
+                    <div class="col-md-6 mb-4">
+                      <div data-mdb-input-init class="form-outline">
+                        <input  [(ngModel)]="testt.FirstName" type="text" id="form3Example1m" class="form-control form-control-lg"  />
+                        <label class="form-label" for="form3Example1m">First name</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                      <div data-mdb-input-init class="form-outline">
+                        <input  [(ngModel)]="testt.LastName" type="text" id="form3Example1n" class="form-control form-control-lg" />
+                        <label class="form-label" for="form3Example1n">Last name</label>
+                      </div>
+                    </div>
+                  </div>
+  
+                  <div class="row">
+                    <div class="col-md-6 mb-4">
+                      <div data-mdb-input-init class="form-outline">
+                        <input [(ngModel)]="testt.email" type="email" id="form3Example1m1" class="form-control form-control-lg" />
+                        <label class="form-label" for="form3Example1m1">Email</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                      <div data-mdb-input-init class="form-outline">
+                        <input [(ngModel)]="testt.Salary" type="text" id="form3Example1n1" class="form-control form-control-lg" />
+                        <label class="form-label" for="form3Example1n1">Salary</label>
+                      </div>
+                    </div>
+                  </div>
+  
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <input [(ngModel)]="testt.Type" type="text" id="form3Example8" class="form-control form-control-lg" />
+                    <label class="form-label" for="form3Example8">Type</label>
+                  </div>
+  
+                  <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+                    <!-- //hake -->
+                    <h6 class="mb-0 me-4">Gender: </h6>
+  
+                    <div class="form-check form-check-inline mb-0 me-4">
+                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender"
+                        value="option1" />
+                      <label class="form-check-label" for="femaleGender">Female</label>
+                    </div>
+  
+                    <div class="form-check form-check-inline mb-0 me-4">
+                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender"
+                        value="option2" />
+                      <label class="form-check-label" for="maleGender">Male</label>
+                    </div>
+  
+                    <div class="form-check form-check-inline mb-0">
+                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="otherGender"
+                        value="option3" />
+                      <label class="form-check-label" for="otherGender">Other</label>
+                    </div>
+  
+                  </div>
+  
+                  <div class="row">
+                    <div class="col-md-6 mb-4">
+  
+    
+                           <label for="JopType">Choose Brabch Id:</label>
+                        <select name="JopType"  data-mdb-select-init id="cars" (change)="onJobTypeChange($event)" class="input">
+                        <option name="JopType" style="color: black;">1</option>
+                        <option name="JopType" style="color: black;">2</option>
+                        <option name="JopType" style="color: black;">3</option>
+                          </select>
+
+                   </div>
+
+                    <!-- hake -->
+                    <div class="col-md-6 mb-4">
+  
+                      <select data-mdb-select-init>
+                        <option value="1">City</option>
+                        <option value="2">Irbid</option>
+                        <option value="3">Amman</option>
+                        <option value="4">Jarch</option>
+                      </select>
+  
+                    </div>
+                  </div>
+  
+                
+              
+                    <!-- hake -->
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="text" id="form3Example97" class="form-control form-control-lg" />
+                    <label class="form-label" for="form3Example97">Shift</label>
+                  </div>
+  
+                  <div class="d-flex justify-content-end pt-3">
+                    <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-light btn-lg" (click)="AddEmp()">Add Employee</button>
+                    <button [routerLink]="['/admin', id]" type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-warning btn-lg ms-2">returen home</button> 
+
+                  </div>
+  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

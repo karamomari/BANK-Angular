@@ -1,0 +1,255 @@
+<div class="toback"></div>
+  <div class="container">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Employee Page</h5>
+      <div *ngFor="let i of infoEmp">
+        <p class="mb-0">Hello, {{i.firstName}} {{i.lastName}}</p>
+        <p>Your ID: {{i.id}}</p>
+        <p>Your Email : {{i.email}}</p>
+      </div>
+    <p (click)="logout()"><i class="fa-solid fa-arrow-right-from-bracket icon"></i>Logout</p>
+    <!-- <p (click)="hash()"><i class="fa-solid fa-arrow-right-from-bracket icon"></i>hash</p> -->
+     
+    </div>
+  </div>
+
+  <div *ngIf="other" id="other">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card card-custom">
+          <img class="card-img-top" src="../../assets/images/for-new-customers.png" alt="Register New Employee">
+          <div class="card-body">
+            <h5 class="card-title">Register New Customer</h5>
+            <p class="card-text">Register a new customer.</p>
+            <button class="btn" (click)="regcust1()">Register</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card card-custom">
+          <img class="card-img-top" src="../../assets/images/free-email-icon-2911-thumb.png" alt="Check Email">
+          <div class="card-body">
+            <h5 class="card-title">Check Email</h5>
+            <p class="card-text">Reply to employee emails.</p>
+            <button class="btn" (click)="CheckEmail()">Check</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card card-custom">
+          <img class="card-img-top" src="../../assets/images/free-review-icon-2911-thumb.png" alt="New Customer">
+          <div class="card-body">
+            <h5 class="card-title">New Customer</h5>
+            <p class="card-text">View new customer details.</p>
+            <button class="btn" (click)="viewNewCus()">View</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card card-custom">
+          <img class="card-img-top" src="../../assets/images/free-search-icon-2911-thumb.png" alt="Search Customer">
+          <div class="card-body">
+            <h5 class="card-title">Search Customer</h5>
+            <p class="card-text">
+              <label for="exampleInputEmail1">SSN</label>
+              <input [(ngModel)]="SSNtoSerach" type="text" class="form-control">
+            </p>
+            <button type="submit" class="btn" (click)="viewCus()">Search</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div *ngIf="CheakEmails" id="CheakEmails">
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Emails</h5>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Email Number</th>
+          <th>Customer ID</th>
+          <th>Message</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let a of allEmail">
+        <tr>
+          <td>{{a.hlepNum}}</td>
+          <td>{{a.custmerId}}</td>
+          <td>{{a.message}}</td>
+          <td><button class="btn btn-dark" (click)="Rebly(a.hlepNum)">Reply</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="btn btn-dark" (click)="ngOnInit()">“Close Inquiries</button>
+  </div>
+</div>
+</div>
+
+
+
+<div *ngIf="toreblayEmail" id="toreblayEmail" class="reply-container">
+  <h5 class="reply-title">Reply to Email</h5>
+  <textarea placeholder="Your message to reply" [(ngModel)]="newMsg" class="reply-input"></textarea>
+  <div class="reply-actions">
+    <button class="btn btn-dark" (click)="Rebly2()">Reply</button>
+  </div>
+</div>
+
+
+
+
+
+<div *ngIf="toRegComp" id="toRegComp">
+<app-other-reg (press)="receiveData($event)"></app-other-reg>
+</div>
+
+
+
+
+<div *ngIf="tocompletRegAc" id="tocompletRegAc">
+  <label for="">UserName</label>
+  <input class="form-control form-control-lg"  type="text" [(ngModel)]="infotocompletRegAc.UserName">
+  <div></div>
+  
+  <label for="">Password</label>
+  <input class="form-control form-control-lg"  type="text" [(ngModel)]="infotocompletRegAc.Password">
+  <div></div>
+  
+  <label for="">Balance</label>
+  <input class="form-control form-control-lg"  type="text" [(ngModel)]="infotocompletRegAc.Balance">
+  <div></div>
+  
+  <label for="">TypeAccount</label>
+  <input class="form-control form-control-lg"  type="text" [(ngModel)]="infotocompletRegAc.TypeAccount">
+  <div></div>
+  <button class="btn btn-dark" (click)="complereg()">add</button>
+</div> 
+
+
+
+
+
+
+
+
+<div *ngIf="toshownewcus" id="toshownewcus">
+  <div class="container-fluid">
+    <div class="card">
+    <div class="card-body">
+           
+    <table class="table">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>SSN</th>
+            <th>City</th>
+            <th>Street</th>
+            <th>Age</th>
+            <th>Email</th>
+
+        </tr>
+    </thead>
+    
+    <tbody *ngFor="let a of infoNewCus">
+    <tr>
+            <td>{{a.firstName}}</td>
+            <td>{{a.lastName}}</td>
+            <td>{{a.ssn}}</td>
+            <td>{{a.city}}</td>
+            <td>{{a.street}}</td>
+            <td>{{a.age}}</td>
+            <td>{{a.email}}</td>  
+          <td> <button class="btn btn-dark" (click)="consentCus(a.custmerId)">consent</button></td>
+        </tr>
+    </tbody>
+    </table>
+    </div>
+    </div>
+    </div>
+    <button class="btn btn-dark" (click)="ngOnInit()">Back Home</button>
+</div>
+
+
+
+
+
+<div *ngIf="toshowoneCus" id="toshowoneCus">
+  <div class="container-fluid">
+    <div class="card">
+    <div class="card-body">
+           
+    <table class="table">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Custmer Id</th>
+            <th>SSN</th>
+            <th>City</th>
+            <th>Street</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Ceidet point</th>
+            <th>ACcount Id</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+    <tr>
+            <td>{{infooneCus.firstName}}</td>
+            <td>{{infooneCus.lastName}}</td>
+            <td>{{infooneCus.custmerId}}</td>
+            <td>{{infooneCus.ssn}}</td>
+            <td>{{infooneCus.city}}</td>
+            <td>{{infooneCus.street}}</td>
+            <td>{{infooneCus.age}}</td>
+            <td>{{infooneCus.email}}</td>  
+            <td>{{infooneCus.creditPoint}}</td>  
+            <td>{{infooneCus.accountId}}</td>  
+        
+          <td> <button class="btn btn-dark" (click)="activationCus(infooneCus.custmerId)">consent</button></td>
+          <td> <button class="btn btn-dark" (click)="suspendingCus(infooneCus.custmerId)">suspending</button></td>
+          <td> <button class="btn btn-dark" (click)="toshowformupdate()">update</button></td>
+          <td> <button class="btn btn-dark" (click)="showprocess(infooneCus.custmerId)">last process</button></td>
+          <td> <button class="btn btn-dark" (click)="stopAtm(infooneCus.custmerId)">Stop Atm</button></td>
+
+
+
+        </tr>
+    </tbody>
+    </table>
+    </div>
+    </div>
+    </div>
+
+</div>
+
+
+
+
+<div *ngIf="toshowprocess" id="toshowprocess">
+  <ul>
+    <li *ngFor="let item of infoprocess">
+      <p>Type: {{ item.tyoe }}</p>
+      <p>Process ID: {{ item.processId }}</p>
+      <p>Date: {{ item.date }}</p>
+      <p>Account ID: {{ item.accountId }}</p>
+      <p>Account: {{ item.account ? item.account : 'N/A' }}</p>
+    </li>
+  </ul>
+</div>
+
+
+
+<!-- </div> -->

@@ -1,0 +1,56 @@
+
+
+
+
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-5">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title text-center">Register New Customer</h5>
+            <form>
+              <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input class="form-control" type="text" id="firstName" [(ngModel)]="infotoreg.FirstName" name="firstName">
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input class="form-control" type="text" id="lastName" [(ngModel)]="infotoreg.LastName" name="lastName">
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input class="form-control" type="email" id="email" [(ngModel)]="infotoreg.Email" name="email">
+              </div>
+              <div class="form-group">
+                <label for="pass">Password</label>
+                <input class="form-control" type="password" id="pass" [(ngModel)]="infotoreg.Pass" name="pass">
+              </div>
+              <div class="form-group">
+                <label for="ssn">SSN</label>
+                <input class="form-control" type="text" id="ssn" [(ngModel)]="infotoreg.Ssn" name="ssn">
+              </div>
+              <div class="form-group">
+                <label for="age">Age</label>
+                <input class="form-control" type="text" id="age" [(ngModel)]="infotoreg.Age" name="age">
+              </div>
+              <div class="form-group">
+                <label for="city">City</label>
+                <input class="form-control" type="text" id="city" [(ngModel)]="infotoreg.City" name="city">
+              </div>
+              <div class="form-group">
+                <label for="street">Street</label>
+                <input class="form-control" type="text" id="street" [(ngModel)]="infotoreg.Street" name="street">
+              </div>
+              <div class="form-group">
+                <label for="image">Image</label>
+                <input class="form-control-file" type="file" id="image" name="image">
+              </div>
+              <button class="btn btn-dark btn-block mt-4" (click)="api()">Add Customer</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

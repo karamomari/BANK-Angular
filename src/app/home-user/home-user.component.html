@@ -1,0 +1,281 @@
+
+<div class="body">
+      <div class="container-fluid">
+          <div class="card">
+              <div class="card-body">
+                  <h5 class="card-title fw-semibold mb-4">Customer Page</h5>
+                  <div *ngFor="let i of infoCus" class="customer-info">
+                      <p><i class="fas fa-user icon"></i>Hello, <span class="customer-name">{{i.firstName}} {{i.lastName}}</span></p>
+                      <p><i class="fas fa-id-card icon"></i>Account ID: <span class="account-id">{{i.accountId}}</span></p>
+                      <p><i class="fas fa-coins icon"></i>Credit Points: <span class="credit-points">{{i.creditPoint}}</span></p>
+                      <p><i class="fas fa-envelope icon"></i>Email: <span class="email">{{i.email}}</span></p>
+
+                  </div>
+
+
+
+
+ <div class="operations">
+    <p (click)="LoanClick()"><i class="fas fa-money-check-alt icon"></i>Get Loan</p>
+    <p (click)="TransactionClick()"><i class="fas fa-exchange-alt icon"></i>Transaction</p>
+    <p (click)="AllinfoClick()"><i class="fas fa-info-circle icon"></i>All Info</p>
+    <p (click)="handleInquiryClick()"><i class="fas fa-search icon"></i>Inquiry</p>
+    <p (click)="active()"><i class="fas fa-unlock icon"></i>Activate ATM</p>
+    <p (click)="stopatm()"><i class="fas fa-ban icon"></i>Stop ATM</p>
+    <p (click)="update()"><i class="fas fa-sync-alt update-icon icon"></i>Update</p>
+ 
+   
+      <p >
+        <i class="fas fa-brain icon" data-toggle="modal" data-target="#exampleModalLong"></i>Chat
+      </p>
+      <p (click)="DeleteAccount()"><i class="fa-solid fa-trash icon"></i>Delete Account</p>
+    
+    <p (click)="logout()"><i class="fa-solid fa-arrow-right-from-bracket icon"></i>Logout</p>
+   
+  </div>
+
+
+<div *ngIf="totransactionboolen" id="totransactionboolen" class="transaction-container">
+  <div class="transaction-form">
+      <h5 class="card-title fw-semibold mb-4">Transaction</h5>
+      <form>
+          <label for="depositeAccount">Deposite Account</label>
+          <input [(ngModel)]="infoFortrns.DepositeAccount" type="number" id="depositeAccount" name="depositeAccount" placeholder="Enter deposite account number">
+          
+          <label for="amount">Amount</label>
+          <input [(ngModel)]="infoFortrns.ammount" type="number" id="amount" name="amount" placeholder="Enter amount">
+          
+          <label for="type">Type</label>
+          <select [(ngModel)]="infoFortrns.Type" id="type" name="type">
+              <option value="deposit">Deposit</option>
+              <option value="withdrawal">Withdrawal</option>
+              <option value="Transfer ">Transfer </option>
+
+          </select>
+          
+          <button type="submit" (click)="transaction()">Transfer</button>
+      </form>
+  </div>
+</div>
+
+
+
+
+
+
+<div *ngIf="inquiryboolen" id="inquiryboolen" class="inquiry-container">
+  <div class="inquiry-form">
+      <h5 class="card-title">Inquiry</h5>
+      <form #inquiryForm="ngForm">
+          <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Enter your message" rows="4" required [(ngModel)]="Mas"></textarea>
+          </div>
+          <button type="submit" [disabled]="!inquiryForm.form.valid" (click)="sendInquiry()">Submit</button>
+      </form>
+  </div>
+</div>
+
+
+
+
+<div *ngIf="allinfoCusboolen" id="allinfoCusboolen" class="customer-info-container">
+  <div class="customer-info">
+      <h5 class="card-title">Customer Information</h5>
+      <p><strong>First Name:</strong> {{allinfoCus.firstName}}</p>
+      <p><strong>Last Name:</strong> {{allinfoCus.lastName}}</p>
+      <p ><strong>Balance:</strong> {{allinfoCus.balance}}</p>
+      <!-- <p *ngIf="!allinfoCusBalancetoshow"><strong>Balance:</strong> 0</p> -->
+      <p><strong>SSN:</strong> {{allinfoCus.ssn}}</p>
+      <p><strong>City:</strong> {{allinfoCus.city}}</p>
+      <p><strong>Street:</strong> {{allinfoCus.street}}</p>
+      <p><strong>Age:</strong> {{allinfoCus.age}}</p>
+      <p><strong>Password:</strong> {{allinfoCus.password}}</p>
+      <p><strong>Credit Points:</strong> {{allinfoCus.creditPoint}}</p>
+      <!-- <p><strong>Photo:</strong> <img [src]="allinfoCus.photo" alt="Customer Photo" class="customer-photo"></p> -->
+      <p><strong>Are there any loans:</strong> {{Areloans}}</p>
+      <p *ngIf="Areloansboolen"><strong>Loan Amount:</strong> {{allinfoCus.amountloan}}</p>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  <div *ngIf="loanboolen" id="loanboolen" class="inquiry-container">
+  <div class="inquiry-form">
+      <h5 class="card-title">Loan Request</h5>
+      <form #inquiryForm="ngForm">
+          <div class="form-group">
+              <label for="message">Amount</label>
+              <input [(ngModel)]="ammount" id="message" name="message" placeholder="Enter  Amount" rows="4" required>
+          </div>
+          <button (click)="GetLoan()"ass="ml-2" type="submit" [disabled]="!inquiryForm.form.valid" >Loan Request</button>
+      </form>
+  </div>
+</div>
+
+
+
+
+
+</div>
+</div>
+
+
+
+<div *ngIf="toupdateboolen" id="toupdateboolen" class="transaction-container">
+  <div class="transaction-form">
+      <h5 class="card-title fw-semibold mb-4">Update</h5>
+      <form>
+          <label for="depositeAccount">Password</label>
+          <input [(ngModel)]="infotoupdate.pass" type="password" id="depositeAccount" name="depositeAccount" placeholder="Enter deposite account number">
+          
+          <label for="amount">Street</label>
+          <input [(ngModel)]="infotoupdate.street" type="text" id="amount" name="amount" placeholder="Enter amount">
+          
+         
+          <label for="amount">City</label>
+          <input [(ngModel)]="infotoupdate.city" type="text" id="amount" name="amount" placeholder="Enter amount">
+          
+
+          <button type="submit" (click)="updateinfo()">update</button>
+      </form>
+  </div>
+</div>
+
+
+</div>
+
+
+
+
+
+
+<!-- Modal -->
+  <div  class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Chat</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="chat-container">
+            <div class="chat-header">
+                <h2>Chatbot</h2>
+            </div>
+
+            <div class="chat-messages" id="chat-messages">
+              <div *ngFor="let message of chatMessages">
+                <div class="message bot-message">{{ message }}</div>
+              </div>
+            </div>
+
+
+            <div class="chat-input">
+              <input [(ngModel)]="quss" placeholder="Write your question">
+            </div>
+          
+
+
+          </div>
+
+
+
+
+
+          <script src="script.js"></script>
+        <style>
+          /* styles.css */
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+    }
+    
+    .chat-container {
+        width: 400px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+    
+    .chat-header {
+        background-color: #007bff;
+        color: white;
+        padding: 10px;
+        text-align: center;
+    }
+    
+    .chat-messages {
+        padding: 10px;
+        height: 300px;
+        overflow-y: auto;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    .message {
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    
+    .bot-message {
+        background-color: #e1ffc7;
+        align-self: flex-start;
+    }
+    
+    .user-message {
+        background-color: #d1e7ff;
+        align-self: flex-end;
+    }
+    
+    .chat-input {
+        display: flex;
+        padding: 10px;
+    }
+    
+    .chat-input input {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin-right: 10px;
+    }
+    
+    .chat-input button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+        </style>
+    
+          
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        <button class="btn btn-primary" (click)="sendMessage()">Send with my information </button>
+        <button class="btn btn-primary" (click)="sendMessage3()">Send</button>
+
+      </div>
+    </div>
+  </div>
+</div>

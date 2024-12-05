@@ -1,0 +1,283 @@
+<div class="toback"></div>
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Admin Page</h5>
+      <div *ngFor="let i of infoForAdmin">
+        <p class="mb-0">Hello, {{i.firstName}} {{i.lastName}}</p>
+        <p>Your ID: {{i.id}}</p>
+        <p>Your {{i.email}}</p>
+      </div>
+      <p (click)="logout()"><i class="fa-solid fa-arrow-right-from-bracket icon"></i>Logout</p>
+ 
+    </div>
+  </div>
+
+ 
+
+  <div *ngIf="other" id="other">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="card card-custom">
+          <img class="card-img-top" src="../../assets/image admin/search employee icon.jpg" alt="Register New Employee">
+          <div class="card-body">
+            <h5 class="card-title">Search Employee</h5>
+            <p class="card-text">
+              <label for="exampleInputEmail1">First Name</label>
+              <input [(ngModel)]="NameEmp.firstName" type="text" class="form-control">
+              <label for="exampleInputPassword1">Last Name</label>
+              <input [(ngModel)]="NameEmp.lastName" type="text" class="form-control">
+            </p>
+            <button type="submit" class="btn btn-primary" (click)="viewdetilasEmp()">Search</button>
+          </div>
+        </div>
+      </div>
+
+ 
+
+
+
+      <div class="col-md-3">
+        <div class="card card-custom">
+          <img class="card-img-top" src="../../assets/image admin/ubdate employee icon.png" alt="Update Employee">
+          <div class="card-body">
+            <h5 class="card-title">Update Employee</h5>
+            <p class="card-text">
+              <label for="exampleInputEmail1">First Name</label>
+              <input [(ngModel)]="NameEmp.firstName" type="text" class="form-control">
+              <label for="exampleInputPassword1">Last Name</label>
+              <input [(ngModel)]="NameEmp.lastName" type="text" class="form-control">
+            </p>
+            <button type="submit" class="btn btn-primary" (click)="viewdetilasEmp()">Update</button>
+          </div>
+        </div>
+      </div>
+
+
+
+  
+      <div class="col-md-3">
+        <div class="card card-custom">
+          <img class="card-img-top" src="../../assets/image admin/icon register.png" alt="Register New Employee">
+          <div class="card-body">
+            <h5 class="card-title">Search Customer</h5>
+       <p class="card-text">
+              <label for="exampleInputEmail1">SSN</label>
+              <input [(ngModel)]="SSNtoSerach" type="text" class="form-control">
+            </p>
+            <button type="submit" class="btn btn-primary" (click)="viewCus()">Search</button>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <div class="col-md-3">
+        <div class="card card-custom">
+          <img class="card-img-top" src="../../assets/image admin/cus.webp" alt="Update Employee">
+          <div class="card-body">
+            <h5 class="card-title">Update Customer</h5>
+            <p class="card-text">
+              <label for="exampleInputEmail1">SSN</label>
+              <input [(ngModel)]="SSNtoSerach" type="text" class="form-control">
+            </p>
+            <button type="submit" class="btn btn-primary" (click)="viewCus()">Update</button>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+ 
+
+<br>
+
+
+  <div class="row" id="t">
+   
+
+
+
+
+    <div class="col-md-3">
+      <div class="card card-custom">
+        <img class="card-img-top" src="../../assets/image admin/icon register.png" alt="Add Employee">
+        <div class="card-body">
+          <h5 class="card-title">Register</h5>
+          <p class="card-text">Add a new employee to the system.</p>
+          <button class="btn btn-primary" [routerLink]="['/admin_addEmployee', id]">Add</button>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="col-md-3">
+      <div class="card card-custom">
+        <img class="card-img-top" src="../../assets/image admin/cheack loan icon.jpg" alt="Customer Loan">
+        <div class="card-body">
+          <h5 class="card-title fw-semibold mb-2">Loan</h5>
+          <h5 class="card-title">Customer Loan</h5>
+          <p class="card-text">Manage user accounts and roles within the system</p>
+          <button class="btn btn-primary" routerLink="/admin_cheakLoan/{{id}}">Check Loan</button>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="col-md-3">
+      <div class="card card-custom">
+        <img class="card-img-top" src="../../assets/image admin/report loan icon.webp" alt="Reports Loan">
+        <div class="card-body">
+          <h5 class="card-title fw-semibold mb-2">Report</h5>
+          <h5 class="card-title">Reports Loan</h5>
+          <p class="card-text">Manage user accounts and roles within the system</p>
+          <button class="btn btn-primary" (click)="reportLoan()">Create</button>
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="col-md-3">
+      <div class="card card-custom">
+        <img class="card-img-top" src="../../assets/image admin/report employee icon.png" alt="Reports Employee">
+        <div class="card-body">
+          <h5 class="card-title">Reports Employee</h5>
+          <p class="card-text">Manage user accounts and roles within the system</p>
+          <button class="btn btn-primary" (click)="reportemp(infoForAdmin[0].branchId)">Report Employee</button>
+        </div>
+      </div>
+    </div>
+    
+
+
+
+
+  </div>
+  
+</div>
+
+
+ 
+
+
+
+
+<div *ngIf="dataOFempdisplay" id="dataOFempdisplay">
+  <app-admin-details-emp [dataOFemp]="dataOFemp" ></app-admin-details-emp>
+    <button class="btn btn-dark m-2" (click)="suspending()">suspending</button>
+    <button class="btn btn-dark m-2" (click)="activation()">activation</button>
+    <button class="btn btn-dark m-2" (click)="updateEmp()">update info</button>
+    <button class="btn btn-dark m-2" (click)="ngOnInit()">Hide </button>
+  </div>
+
+
+
+
+  <div *ngIf="toupdateEmp" id="toupdateEmp">
+    <br>
+    <div class="form-container">
+      <label for="branchId">Branch ID</label>
+      <input type="text" id="branchId" [(ngModel)]="infoudate.branchId">
+    
+      <label for="type">Type</label>
+      <input type="text" id="type" [(ngModel)]="infoudate.type">
+    
+      <label for="lastName">Last Name</label>
+      <input type="text" id="lastName" [(ngModel)]="infoudate.lastName">
+    
+      <label for="firstName">First Name</label>
+      <input type="text" id="firstName" [(ngModel)]="infoudate.firstName">
+    
+      <label for="salary">Salary</label>
+      <input type="text" id="salary" [(ngModel)]="infoudate.salary" placeholder="{{dataOFemp[0].salary}}">
+    
+      <label for="photo">Photo</label>
+      <input type="file" id="photo" [(ngModel)]="infoudate.photo">
+    
+      <label for="startDate">Start Date</label>
+      <input type="date" id="startDate" [(ngModel)]="infoudate.startDate">
+    
+      <button (click)="receiveData()">Send</button>
+    </div>
+    
+
+    </div>
+    
+
+
+    <div *ngIf="RepEmpComp" id="RepEmpComp">
+    <app-admin-rep-bran [allEmp]="RepEmp"></app-admin-rep-bran>
+    <button class="btn btn-primary" (click)="ngOnInit()">Hide</button>
+    </div>
+
+
+        <div *ngIf="RepLoanComp" id="RepLoanComp">
+      <app-admin-rep-loan  [allLoan]="allLoan"></app-admin-rep-loan>
+      <button class="btn btn-primary" (click)="ngOnInit()">Hide</button>
+    </div>
+  </div>
+
+
+
+  <div *ngIf="toshowoneCus" id="toshowoneCus">
+    <div class="container-fluid">
+      <div class="card">
+      <div class="card-body">
+             
+      <table class="table">
+      <thead>
+          <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Custmer Id</th>
+              <th>SSN</th>
+              <th>City</th>
+              <th>Street</th>
+              <th>Age</th>
+              <th>Email</th>
+              <th>Ceidet point</th>
+              <th>ACcount Id</th>
+          </tr>
+      </thead>
+      
+      <tbody>
+      <tr>
+              <td>{{infooneCus.firstName}}</td>
+              <td>{{infooneCus.lastName}}</td>
+              <td>{{infooneCus.custmerId}}</td>
+              <td>{{infooneCus.ssn}}</td>
+              <td>{{infooneCus.city}}</td>
+              <td>{{infooneCus.street}}</td>
+              <td>{{infooneCus.age}}</td>
+              <td>{{infooneCus.email}}</td>  
+              <td>{{infooneCus.creditPoint}}</td>  
+              <td>{{infooneCus.accountId}}</td>  
+          
+            <td> <button class="btn btn-dark" (click)="activationCus(infooneCus.custmerId)">consent</button></td>
+            <td> <button class="btn btn-dark" (click)="suspendingCus(infooneCus.custmerId)">suspending</button></td>
+            <td> <button class="btn btn-dark" (click)="ngOnInit()">Hide</button></td>
+
+  
+  
+  
+          </tr>
+      </tbody>
+      </table>
+      </div>
+      </div>
+      </div>
+    
+      <button class="btn btn-dark" (click)="ngOnInit()">Back Home</button>
+  </div>
+  
+
+
+
+
+
+
+
+  

@@ -18,6 +18,7 @@ export const environment = {
   // };
   export const environmentt = {
     
-  
+  apiUrl : 'https://api.openai.com/v1/chat/completions', // رابط API
+    apiKey : 'sk-qQc7-vzxbKtBySAfW-cy6Yr4JEdA29MM1J-pr0HccJT3BlbkFJMRw72k3wdp_m3tZgg-zhd-ZtCUfr6caHatNujSthIA'
   }
 
